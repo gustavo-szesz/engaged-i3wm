@@ -1,0 +1,273 @@
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+# Define mod key
+set $mod Super_L
+
+# Font for window titles and bar
+font pango:JetBrains Mono 10
+
+# Colors - Engaged Theme
+set $engaged_purple  #663399
+set $engaged_red     #D32F2F
+set $background      #1a1a1a
+set $foreground      #FFFFFF
+set $gray_dark       #2a2a2a
+set $gray_light      #3a3a3a
+
+# Border and gaps
+for_window [class="^.*"] border pixel 2
+gaps inner 8
+gaps outer 4
+
+# Smart gaps (gaps used if more than one window)
+smart_gaps on
+smart_borders on
+
+# ============================================================================
+# WINDOW COLORS
+# ============================================================================
+# class                 border              background          text            indicator           child_border
+client.focused          $engaged_purple     $engaged_purple     $foreground     $engaged_red        $engaged_purple
+client.focused_inactive $gray_dark          $gray_dark          $foreground     $gray_dark          $gray_dark
+client.unfocused        $gray_dark          $gray_dark          $foreground     $gray_dark          $gray_dark
+client.urgent           $engaged_red        $engaged_red        $foreground     $engaged_red        $engaged_red
+client.placeholder      $background         $background         $foreground     $background         $background
+client.background       $background
+
+# ============================================================================
+# KEY BINDINGS - ESSENTIAL
+# ============================================================================
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id alacritty
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Rofi (launcher/dmenu replacement)
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme /home/$USER/.config/rofi/engaged.rasi
+
+# Window switcher (Rofi)
+bindsym $mod+Tab exec --no-startup-id rofi -show window -theme /home/$USER/.config/rofi/engaged.rasi
+
+# ============================================================================
+# KEY BINDINGS - NAVIGATION
+# ============================================================================
+
+# Change focus with arrow keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Alternative with hjkl
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move focused window with Shift+arrows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Alternative with hjkl
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# ============================================================================
+# KEY BINDINGS - LAYOUT
+# ============================================================================
+
+# Split in horizontal orientation
+bindsym $mod+v split h
+
+# Split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# Focus the child container
+bindsym $mod+c focus child
+
+# ============================================================================
+# KEY BINDINGS - WORKSPACES
+# ============================================================================
+
+# Define workspace names
+set $ws1 "1: 🚀"
+set $ws2 "2: 💻"
+set $ws3 "3: 🌐"
+set $ws4 "4: 🐛"
+set $ws5 "5: 📝"
+set $ws6 "6: 🎨"
+set $ws7 "7: 📊"
+set $ws8 "8: 🔧"
+set $ws9 "9: 📁"
+set $ws10 "10: 🎮"
+
+# Switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# ============================================================================
+# KEY BINDINGS - I3 MANAGEMENT
+# ============================================================================
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace (preserves your layout/session)
+bindsym $mod+Shift+r restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# ============================================================================
+# KEY BINDINGS - RESIZING
+# ============================================================================
+
+mode "resize" {
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # ditto, but also for the arrow keys
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# ============================================================================
+# KEY BINDINGS - QA / DEBUGGING (CUSTOM)
+# ============================================================================
+
+# Firefox DevTools
+bindsym $mod+p exec --no-startup-id firefox
+
+# Chrome/Chromium DevTools
+bindsym $mod+Shift+p exec --no-startup-id google-chrome || chromium
+
+# Screenshot (full screen)
+bindsym Print exec --no-startup-id scrot ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png && notify-send "Screenshot saved!"
+
+# Screenshot (selection)
+bindsym Shift+Print exec --no-startup-id scrot -s ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png && notify-send "Screenshot saved!"
+
+# Open file manager
+bindsym $mod+m exec --no-startup-id thunar
+
+# Open editor
+bindsym $mod+Shift+n exec --no-startup-id code || gedit
+
+# Volume control
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Brightness control
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
+# Lock screen
+bindsym $mod+shift+x exec --no-startup-id i3lock -c 663399
+
+# ============================================================================
+# STARTUP
+# ============================================================================
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Set wallpaper
+exec_always --no-startup-id feh --bg-fill ~/.config/i3/wallpaper.png 2>/dev/null || feh --bg-fill /usr/share/backgrounds/xfce/xfce-blue.jpg
+
+# Notification daemon
+exec_always --no-startup-id dunst
+
+# Compositor (optional, for transparency)
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf 2>/dev/null
+
+# Network Manager
+exec --no-startup-id nm-applet
+
+# Clipboard manager (optional)
+exec --no-startup-id clipman
+
+# ============================================================================
+# WORKSPACE ASSIGNMENTS
+# ============================================================================
+
+assign [class="code"] $ws2
+assign [class="google-chrome"] $ws3
+assign [class="firefox"] $ws3
+assign [class="Chromium"] $ws3
+assign [class="thunar"] $ws9
+assign [class="Alacritty"] $ws1
+
+# ============================================================================
+# FLOATING WINDOWS
+# ============================================================================
+
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="VirtualBox Manager"] floating enable
+for_window [title="alsamixer"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Galculator"] floating enable
+
+# ============================================================================
+# AUDIO / MULTIMEDIA
+# ============================================================================
+
+# Pulse Audio
+exec --no-startup-id pulseaudio --start
