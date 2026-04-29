@@ -1,0 +1,154 @@
+/* Engaged Rofi Theme - Dark Mode with Corporate Colors */
+
+* {
+    background-color: #1a1a1a;
+    border-color: #663399;
+    text-color: #FFFFFF;
+    spacing: 0;
+    padding: 0;
+}
+
+window {
+    background-color: #1a1a1a;
+    border: 2px;
+    border-color: #663399;
+    border-radius: 8px;
+    padding: 20px;
+    width: 600px;
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    spacing: 10px;
+    text-color: #FFFFFF;
+    padding: 12px;
+    border: 1px;
+    border-color: #663399;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+}
+
+prompt {
+    enabled: true;
+    padding: 6px 12px 6px 6px;
+    background-color: #663399;
+    text-color: #FFFFFF;
+    border-radius: 4px;
+    font: "JetBrains Mono 11";
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+    text-color: inherit;
+}
+
+entry {
+    placeholder: "Type to search...";
+    placeholder-color: #999999;
+    text-color: #FFFFFF;
+    background-color: transparent;
+    padding: 6px;
+}
+
+listview {
+    border: 1px solid;
+    border-color: #663399;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    padding: 8px 0px 8px 0px;
+    dynamic: true;
+    scrollbar: true;
+}
+
+scrollbar {
+    width: 4px;
+    handle-color: #663399;
+    handle-width: 4px;
+    border: 0;
+    background-color: #2a2a2a;
+}
+
+element {
+    border: 0;
+    padding: 8px 12px;
+    spacing: 6px;
+}
+
+element normal {
+    background-color: #1a1a1a;
+    text-color: #FFFFFF;
+}
+
+element normal.urgent {
+    background-color: #D32F2F;
+    text-color: #FFFFFF;
+}
+
+element normal.active {
+    background-color: #663399;
+    text-color: #FFFFFF;
+}
+
+element selected {
+    background-color: #663399;
+    text-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+element selected.urgent {
+    background-color: #D32F2F;
+    text-color: #FFFFFF;
+}
+
+element selected.active {
+    background-color: #9C27B0;
+    text-color: #FFFFFF;
+}
+
+element-icon {
+    size: 24px;
+    border: 0px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+case-indicator {
+    background-color: transparent;
+    text-color: #D32F2F;
+    spacing: 0;
+}
+
+message {
+    border: 2px;
+    border-color: #663399;
+    padding: 10px;
+    background-color: #1a1a1a;
+    text-color: #FFFFFF;
+}
+
+textbox {
+    background-color: #1a1a1a;
+    border: 0px;
+    text-color: #FFFFFF;
+    padding: 8px;
+}
+
+error-message {
+    padding: 10px;
+    border: 2px solid;
+    border-color: #D32F2F;
+    background-color: #1a1a1a;
+    text-color: #D32F2F;
+    border-radius: 4px;
+}
